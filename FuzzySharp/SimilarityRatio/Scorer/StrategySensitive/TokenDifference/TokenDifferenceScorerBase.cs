@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 using FuzzySharp.PreProcess;
 using FuzzySharp.SimilarityRatio.Scorer.StrategySensitive.Generic;
@@ -21,13 +22,17 @@ namespace FuzzySharp.SimilarityRatio.Scorer.StrategySensitive
         }
 
 
+        public int Score(string input1, string input2, Func<string, string> preprocessor)
+        {
+            input1 = preprocessor(input1);
+            input2 = preprocessor(input2);
+            return Score(input1, input2);
+        }
+
         public int Score(string input1, string input2, PreprocessMode preprocessMode)
         {
             var preprocessor = StringPreprocessorFactory.GetPreprocessor(preprocessMode);
-            input1 = preprocessor(input1);
-            input2 = preprocessor(input2);
-
-            return Score(input1, input2);
+            return Score(input1, input2, preprocessor);
         }
     }
 }
