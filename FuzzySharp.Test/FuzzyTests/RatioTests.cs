@@ -13,7 +13,6 @@ namespace FuzzySharp.Test.FuzzyTests
                        _s3,
                        _s4,
                        _s5,
-                       _s6,
                        _s7,
                        _s8,
                        _s8A,
@@ -21,8 +20,6 @@ namespace FuzzySharp.Test.FuzzyTests
                        _s9A,
                        _s10,
                        _s10A;
-
-        private string[] _cirqueStrings, _baseballStrings;
         #endregion
 
         [SetUp]
@@ -34,7 +31,6 @@ namespace FuzzySharp.Test.FuzzyTests
             _s3  = "the wonderful new york mets";
             _s4  = "new york mets vs atlanta braves";
             _s5  = "atlanta braves vs new york mets";
-            _s6  = "new york mets - atlanta braves";
             _s7  = "new york city mets - atlanta braves";
             // Edge cases
             _s8   = "{";

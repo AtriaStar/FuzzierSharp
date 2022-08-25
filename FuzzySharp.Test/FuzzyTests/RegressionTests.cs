@@ -38,7 +38,6 @@ namespace FuzzySharp.Test.FuzzyTests
 
             MethodInfo getScorerCacheMethodInfo = typeof(ScorerCache).GetMethod("Get");
 
-            string nullString = null;  //Null doesnt seem to be handled by any scorer
             string emptyString = "";
             string whitespaceString = " ";
 
@@ -57,14 +56,14 @@ namespace FuzzySharp.Test.FuzzyTests
                     {
                         scorer.Score(s, "TEST");
                     }
-                    catch (InvalidOperationException e)
+                    catch (InvalidOperationException)
                     {
                         Assert.Fail($"{t.Name}.score failed with empty string as first parameter");
                     }
                     try
                     {
                         scorer.Score("TEST", s);
-                    } catch (InvalidOperationException e)
+                    } catch (InvalidOperationException)
                     {
                         Assert.Fail($"{t.Name}.score failed with empty string as second parameter");
                     }
@@ -72,7 +71,7 @@ namespace FuzzySharp.Test.FuzzyTests
                     {
                         scorer.Score(s, s);
                     }
-                    catch (InvalidOperationException e)
+                    catch (InvalidOperationException)
                     {
                         Assert.Fail($"{t.Name}.score failed with empty string as both parameters");
                     }

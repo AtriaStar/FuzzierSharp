@@ -9,36 +9,11 @@ namespace FuzzySharp.Test.FuzzyTests
     [TestFixture]
     public class ProcessTests
     {
-        private string   _s1;
-        private string   _s1A;
-        private string   _s2;
-        private string   _s3;
-        private string   _s4;
-        private string   _s5;
-        private string   _s6;
-        private string[] _cirqueStrings;
         private string[] _baseballStrings;
 
         [SetUp]
         public void Setup()
         {
-            _s1  = "new york mets";
-            _s1A = "new york mets";
-            _s2  = "new YORK mets";
-            _s3  = "the wonderful new york mets";
-            _s4  = "new york mets vs atlanta braves";
-            _s5  = "atlanta braves vs new york mets";
-            _s6  = "new york mets - atlanta braves";
-            _cirqueStrings = new[]
-            {
-                "cirque du soleil - zarkana - las vegas",
-                "cirque du soleil ",
-                "cirque du soleil las vegas",
-                "zarkana las vegas",
-                "las vegas cirque du soleil at the bellagio",
-                "zarakana - cirque du soleil - bellagio"
-            };
-
             _baseballStrings = new[]
             {
                 "new york mets vs chicago cubs",
