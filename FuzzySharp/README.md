@@ -53,9 +53,9 @@ Fuzz.PartialTokenInitialismRatio("NASA", "National Aeronautics Space Administrat
 
 #### Token Abbreviation Ratio
 ```csharp
-Fuzz.TokenAbbreviationRatio("bl 420", "Baseline section 420", PreprocessMode.Full);
+Fuzz.TokenAbbreviationRatio("bl 420", "Baseline section 420", StandardPreprocessors.Full);
 40
-Fuzz.PartialTokenAbbreviationRatio("bl 420", "Baseline section 420", PreprocessMode.Full);
+Fuzz.PartialTokenAbbreviationRatio("bl 420", "Baseline section 420", StandardPreprocessors.Full);
 50      
 ```
 

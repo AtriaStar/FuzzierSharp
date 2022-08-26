@@ -11,7 +11,7 @@ namespace FuzzySharp
     public static class Process
     {
         private static readonly IRatioScorer s_defaultScorer = ScorerCache.Get<WeightedRatioScorer>();
-        private static readonly Func<string, string> s_defaultStringProcessor = StringPreprocessorFactory.GetPreprocessor(PreprocessMode.Full);
+        private static readonly Func<string, string> s_defaultStringProcessor = StandardPreprocessors.Full.Preprocess;
 
         #region ExtractAll
         /// <summary>
