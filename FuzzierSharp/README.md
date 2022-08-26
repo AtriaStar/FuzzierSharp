@@ -1,24 +1,12 @@
 # FuzzierSharp
-A FuzzySharp fork with a few new features here and there.
-
-# FuzzySharp
 C# .NET fuzzy string matching implementation of Seat Geek's well known python FuzzyWuzzy algorithm. 
-
-# Release Notes:
-v.3.0.0
-
-`PreprocessMode` was replaced with a much more flexible system, existing code can easily be ported by replacing `PreprocessMode` with `StandardPreprocessors`.
-
-v.2.0.0
-
-As of 2.0.0, all empty strings will return a score of 0. Prior, the partial scoring system would return a score of 100, regardless if the other input had correct value or not. This was a result of the partial scoring system returning an empty set for the matching blocks As a result, this led to incorrect values in the composite scores; several of them (token set, token sort), relied on the prior value of empty strings.
-
-As a result, many 1.X.X unit test may be broken with the 2.X.X upgrade, but it is within the expertise fo all the 1.X.X developers to recommended the upgrade to the 2.X.X series regardless, should their version accommodate it or not, as it is closer to the ideal behavior of the library.
-
 
 ## Usage
 
-Install-Package FuzzierSharp
+Install-Package FuzzierSharp -Version 2.0.1
+
+## NOTES
+As of version 2.0.0, if either test string is an empty string, the scorers will return a score of 0. Previously this was returning 100 for all partial ratios, which was causing severe issues for some fo the compound scorers.
 
 #### Simple Ratio
 ```csharp
@@ -65,9 +53,9 @@ Fuzz.PartialTokenInitialismRatio("NASA", "National Aeronautics Space Administrat
 
 #### Token Abbreviation Ratio
 ```csharp
-Fuzz.TokenAbbreviationRatio("bl 420", "Baseline section 420", PreprocessMode.Full);
+Fuzz.TokenAbbreviationRatio("bl 420", "Baseline section 420", StandardPreprocessors.Full);
 40
-Fuzz.PartialTokenAbbreviationRatio("bl 420", "Baseline section 420", PreprocessMode.Full);
+Fuzz.PartialTokenAbbreviationRatio("bl 420", "Baseline section 420", StandardPreprocessors.Full);
 50      
 ```
 
@@ -120,18 +108,6 @@ var best = Process.ExtractOne(query, events, strings => strings[0]);
 best: (value: { "chicago cubs vs new york mets", "CitiField", "2011-05-11", "8pm" }, score: 95, index: 0)
 ```
 
-### FuzzierSharp in Different Languages
-FuzzierSharp was written with English in mind, and as such the Default string preprocessor only looks at English alphanumeric characters in the input strings, and will strip all others out. However, using `IPreprocessor` you can specify your own string preprocessor. If this parameter is omitted, the Default will be used. However if you provide your own, the provided one will be used, so you are free to provide your own criteria for whatever character set you want to admit. For instance, using the parameter `(s) => s` will prevent the string from being altered at all before being run through the similarity algorithms.
-
-E.g.,
-
-```csharp
-var query = "strng";
-var choices = new [] { "stríng", "stráng", "stréng" };
-var results = Process.ExtractAll(query, choices, (s) => s);
-```
-The above will run the similarity algorithm on all the choices without stripping out the accented characters.
-
 ### Using Different Scorers
 Scoring strategies are stateless, and as such should be static. However, in order to get them to share all the code they have in common via inheritance, making them static was not possible.
 Currently one way around having to new up an instance everytime you want to use one is to use the cache. This will ensure only one instance of each scorer ever exists.
@@ -155,4 +131,3 @@ var weighted = ScorerCache.Get<WeightedRatioScorer>();
 - Mikko Ohtamaa (python-Levenshtein)
 - Antti Haapala (python-Levenshtein)
 - Panayiotis (Java implementation I heavily borrowed from)
-- Salvage (tiny amount of features)
