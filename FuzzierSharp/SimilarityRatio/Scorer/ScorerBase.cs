@@ -1,5 +1,4 @@
-﻿using System;
-using FuzzierSharp.PreProcess;
+﻿using FuzzierSharp.PreProcess;
 
 namespace FuzzierSharp.SimilarityRatio.Scorer
 {

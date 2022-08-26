@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Text.RegularExpressions;
 using FuzzierSharp.PreProcess;
 using FuzzierSharp.SimilarityRatio.Scorer.StrategySensitive.Generic;

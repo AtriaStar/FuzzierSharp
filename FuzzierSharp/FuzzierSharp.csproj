@@ -11,8 +11,8 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryType>git</RepositoryType>
         <Company />
-        <Version>3.0.0</Version>
-        <PackageReleaseNotes>Better preprocessing</PackageReleaseNotes>
+        <Version>3.0.1</Version>
+        <PackageReleaseNotes>Visibility fixes</PackageReleaseNotes>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <PackageProjectUrl>https://github.com/Saalvage/FuzzierSharp</PackageProjectUrl>
         <AssemblyVersion>1.0.4.0</AssemblyVersion>
